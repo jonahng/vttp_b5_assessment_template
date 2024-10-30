@@ -43,16 +43,22 @@ public class Main {
 		System.out.println("\n");
 		
 		//Getting the empty spaces where a next move can be played (legal positions to place X)
+		String emptySpotCoords = "";
+		ArrayList<String> listOfEmptyCoords = new ArrayList<>();
 		for(int i = 0; i <3; i ++){
 			for(int k = 0; k<3; k++){
 				if(board[i][k] == '.'){
-					System.out.println("Available position at: x=" + k +" and y=" +i);
-					
+					System.out.println("Available position at: (x=" + k +" , y=" +i +")");
+					emptySpotCoords = String.valueOf(k) + i;
+
+					//adds the empty coordinate XY e.g 02 into a list of coordinates of empty spaces.
+					listOfEmptyCoords.add(emptySpotCoords);
 				}
 			}
 		}
-	
-		
+
+		System.out.println(listOfEmptyCoords);
+
 
 	/* 	positions of each coordinate
 		00,10,20
@@ -76,6 +82,35 @@ public class Main {
 		coordinateMap.put(6, "(x=0, y=2)");
 		coordinateMap.put(7, "(x=1, y=2)");
 		coordinateMap.put(8, "(x=2, y=2)");
+
+		HashMap<String, Integer> boardIndextoCoords = new HashMap<>();
+		// 00 refers to x=0,y=0 and 22 refers to x=2,y=2
+		boardIndextoCoords.put("00", 0);
+		boardIndextoCoords.put("01", 3);
+		boardIndextoCoords.put("02", 6);
+		boardIndextoCoords.put("10", 1);
+		boardIndextoCoords.put("11", 4);
+		boardIndextoCoords.put("12", 7);
+		boardIndextoCoords.put("20", 2);
+		boardIndextoCoords.put("21", 5);
+		boardIndextoCoords.put("22", 8);
+		/* 	positions of each coordinate
+		00,10,20
+		01,11,21
+		02,12,22
+
+		positions of index
+		0,1,2
+		3,4,5
+		6,7,8
+		for reference */
+
+
+		//iterating through the list of coordinates for empty spaces
+		for(String coordinate : listOfEmptyCoords){
+			System.out.println(boardIndextoCoords.get(coordinate));
+		}
+
 
 
 	}
