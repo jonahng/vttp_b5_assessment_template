@@ -6,17 +6,18 @@ import java.util.*;
 public class Main {
 
 	public static void main(String[] args) throws Exception {
-		//CODE TO MAKE IT TAKE ARGUMENT:
+		//CODE TO MAKE IT TAKE ARGUMENT IN COMMAND PROMPT:
 		File boardFile;
 		if(args.length > 0){
 			boardFile = new File("task02\\TTT\\" + args[0]);
 		}else{
 			//Could use system.err.println to show an error message to stop the program. Allowed for default value of board0 when no argument given.
-			System.out.println("ERROR! Restart the program and specify the file name! e.g board1.txt");
+			System.out.println("\nERROR! Restart the program and specify the file name! e.g board1.txt");
 			System.out.println("Since nothing was specified, for demo, using board0.txt");
-			boardFile = new File("task02\\TTT\\board3.txt");
+			boardFile = new File("task02\\TTT\\board4.txt");//NOT HARDCODING, Arguments are accepted, but if no argument given, run a defaut.
 		}
 
+		//Accessing the board.txt files
 		FileReader fileReader = new FileReader(boardFile);
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
 		String lineRead;
@@ -40,7 +41,9 @@ public class Main {
 			}
 			System.out.println();
 		}
-		System.out.println("\n");
+
+		//formatting to make it neater
+		System.out.println("");
 		
 		//Getting the empty spaces where a next move can be played (legal positions to place X)
 		String emptySpotCoords = "";
@@ -48,7 +51,7 @@ public class Main {
 		for(int i = 0; i <3; i ++){
 			for(int k = 0; k<3; k++){
 				if(board[i][k] == '.'){
-					System.out.println("Available position at: (x=" + k +" , y=" +i +")");
+					//System.out.println("Available position at: (x=" + k +" , y=" +i +")");
 					emptySpotCoords = String.valueOf(k) + i;
 
 					//adds the empty coordinate XY e.g 02 into a list of coordinates of empty spaces.
@@ -57,7 +60,7 @@ public class Main {
 			}
 		}
 
-		System.out.println(listOfEmptyCoords);
+		//System.out.println(listOfEmptyCoords);
 
 
 	/* 	positions of each coordinate
@@ -108,7 +111,7 @@ public class Main {
 
 		//iterating through the list of coordinates for empty spaces
 		for(String coordinate : listOfEmptyCoords){
-			String UtilityValue = "0";
+			String UtilityValue = " 0";
 			//System.out.println(boardIndextoCoords.get(coordinate));
 			char[][] newboard = board;
 			String[] XYasString = coordinate.split(""); 
@@ -116,18 +119,18 @@ public class Main {
 			//Getting the x and y coordinates of the specific empty spot
 			int xCoord = Integer.valueOf(XYasString[0]);
 			int yCoord = Integer.valueOf(XYasString[1]);
-			System.out.println("X coord is:" + xCoord + ",  Y coord is:" + yCoord);
+			//System.out.println("X coord is:" + xCoord + ",  Y coord is:" + yCoord);
 
 			//creating a new board with the empty spot becoming X;
 			newboard[yCoord][xCoord] = 'X';
 			
 			for(char[] row: newboard){
 				for(char element : row){
-					System.out.print(element);
+					//System.out.print(element);
 				}
-				System.out.println();
+				//System.out.println();
 			}
-			System.out.println("\n");
+			//System.out.println("\n");
 
 			//CHECK NEW BOARD FOR WIN OR LOSE
 
@@ -159,7 +162,7 @@ public class Main {
 
 			// checking the diagonal /
 			if(newboard[0][2] == newboard[1][1] && newboard[1][1] == newboard[2][0]){
-				if(newboard[0][0] == 'X'){
+				if(newboard[0][2] == 'X'){
 					UtilityValue = "+1";
 				}
 			}
@@ -167,12 +170,13 @@ public class Main {
 
 			
 			//Checking O Values for a O Winning:
-			String OemptySpotCoords = "";
+			if(!UtilityValue.equals("+1")){
+				String OemptySpotCoords = "";
 			ArrayList<String> OlistOfEmptyCoords = new ArrayList<>();
 			for(int i = 0; i <3; i ++){
 			for(int k = 0; k<3; k++){
 				if(newboard[i][k] == '.'){
-					System.out.println("Available position for O at: (x=" + k +" , y=" +i +")");
+					//System.out.println("Available position for O at: (x=" + k +" , y=" +i +")");
 					OemptySpotCoords = String.valueOf(k) + i;
 
 					//adds the empty coordinate XY e.g 02 into a list of coordinates of empty spaces.
@@ -202,7 +206,7 @@ public class Main {
 				}
 			}
 			
-			//checking columns for wins for X
+			//checking columns for wins for O
 			for(int OxCol =0; OxCol <3; OxCol++){
 				if(Onewboard[0][OxCol] == Onewboard[1][OxCol] && Onewboard[1][OxCol] == Onewboard[2][OxCol]){
 					if(Onewboard[0][OxCol] == 'O'){
@@ -211,27 +215,32 @@ public class Main {
 				}
 			}
 
+			//checking the diagonal \
+			if(newboard[0][0] == newboard[1][1] && newboard[1][1] == newboard[2][2]){
+				if(newboard[0][0] == 'O'){
+					UtilityValue = "-1";
+				}
+			}
 
-
+			// checking the diagonal /
+			if(newboard[0][2] == newboard[1][1] && newboard[1][1] == newboard[2][0]){
+				if(newboard[0][2] == 'O'){
+					UtilityValue = "-1";
+				}
+			}
 
 			Onewboard[OyCoord][OxCoord] = '.';
 		}
+
+			}
+			
 		//END OF O SECTION
 
-
-
-
-
-
 			//PRINT OUT THE UTILITY VALUE FOR THE MOVES
-
 			System.out.println("For empty space at:(y =" + yCoord + ", x = " + xCoord+  "),  Utility value is:" + UtilityValue);
 			//resets the new board back to normal
 			newboard[yCoord][xCoord] = '.';
 			
 		}
-
-
-
 	}
 }
