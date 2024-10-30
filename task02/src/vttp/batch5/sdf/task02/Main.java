@@ -14,7 +14,7 @@ public class Main {
 			//Could use system.err.println to show an error message to stop the program. Allowed for default value of board0 when no argument given.
 			System.out.println("ERROR! Restart the program and specify the file name! e.g board1.txt");
 			System.out.println("Since nothing was specified, for demo, using board0.txt");
-			boardFile = new File("task02\\TTT\\board0.txt");
+			boardFile = new File("task02\\TTT\\board3.txt");
 		}
 
 		FileReader fileReader = new FileReader(boardFile);
@@ -108,6 +108,7 @@ public class Main {
 
 		//iterating through the list of coordinates for empty spaces
 		for(String coordinate : listOfEmptyCoords){
+			String UtilityValue = "0";
 			//System.out.println(boardIndextoCoords.get(coordinate));
 			char[][] newboard = board;
 			String[] XYasString = coordinate.split(""); 
@@ -130,12 +131,51 @@ public class Main {
 
 			//CHECK NEW BOARD FOR WIN OR LOSE
 
+			//checking rows for wins for X
+			for(int yRow =0; yRow<3; yRow++){
+				if(newboard[yRow][0] == newboard[yRow][1] && newboard[yRow][1] == newboard[yRow][2]){
+					if(newboard[yRow][0] == 'X'){
+						UtilityValue = "+1";
+
+					}
+				}
+			}
+			
+			//checking columns for wins for X
+			for(int xCol =0; xCol <3; xCol++){
+				if(newboard[0][xCol] == newboard[1][xCol] && newboard[1][xCol] == newboard[2][xCol]){
+					if(newboard[0][xCol] == 'X'){
+						UtilityValue = "+1";
+					}
+				}
+			}
+
+			//checking the diagonal \
+			if(newboard[0][0] == newboard[1][1] && newboard[1][1] == newboard[2][2]){
+				if(newboard[0][0] == 'X'){
+					UtilityValue = "+1";
+				}
+			}
+
+			// checking the diagonal /
+			if(newboard[0][2] == newboard[1][1] && newboard[1][1] == newboard[2][0]){
+				if(newboard[0][0] == 'X'){
+					UtilityValue = "+1";
+				}
+			}
+
+
+			//Checking for O
+			
+
+
+
+
+
 
 			//PRINT OUT THE UTILITY VALUE FOR THE MOVES
 
-
-
-
+			System.out.println("Utility" + UtilityValue);
 			//resets the new board back to normal
 			newboard[yCoord][xCoord] = '.';
 			
