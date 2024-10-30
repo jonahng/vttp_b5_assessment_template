@@ -43,9 +43,44 @@ public class Main {
 		Collections.sort(listOfKeys,Collections.reverseOrder());
 		System.out.println(listOfKeys);
 
+		HashMap<Integer,String> PositionsToStringMap = new HashMap<>();
+		PositionsToStringMap.put(0, "highest");
+		PositionsToStringMap.put(1, "second highest");
+		PositionsToStringMap.put(2, "third highest");
+		PositionsToStringMap.put(3, "fourth highest");
+		PositionsToStringMap.put(4, "fifth highest");
+
+
+		//trying highest day:
+		BikeEntry highestDay = MapOfBikeEntry.get(listOfKeys.get(0));
+
+		//printing out:
+		System.out.println("For the highest day, the season was: " + 
+		highestDay.getSeason() + "and the total number of cyclists was" +
+		String.valueOf(highestDay.getCasual()+highestDay.getRegistered()) +
+		"The day was:" + Utilities.toWeekday(highestDay.getWeekday()));
+
+
+		//iterating through the 5 highest entries
+		for(int i = 0; i<5; i++){
+			//getting the bikeEntry instance from the map, using the key of the totalCyclists
+			BikeEntry highestEntries = MapOfBikeEntry.get(listOfKeys.get(i));
+
+
+			//printing out the statements
+			System.out.println("The " + PositionsToStringMap.get(i) + " recorded number of cyclists was in \n" +
+			Utilities.toSeason(highestEntries.getSeason()) + ", on a " + Utilities.toWeekday(highestEntries.getWeekday()) +
+			" in the month of " + Utilities.toMonth(highestEntries.getMonth()) + ".\n There were a total of " + highestEntries.getCasual()+highestEntries.getRegistered() +
+			" cyclists. The weather \n was " + highestEntries.getWeather() + "\n" + Utilities.toWeekday(highestEntries.getWeekday()) + " was a" + highestEntries.isHoliday()  + "\n");
 
 
 
+
+		}
+/* 		System.out.println(The <POSITION> recorded number of cyclists was in
+		<SEASON>, on a <DAY> in the month of <MONTH>.
+		There was a total of <TOTAL> Cyclists. The weater was <WEATHER>
+		<Day> was <Holiday>. */
 
 	}
 }
