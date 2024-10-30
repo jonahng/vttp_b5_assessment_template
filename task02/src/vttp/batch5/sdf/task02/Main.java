@@ -108,7 +108,37 @@ public class Main {
 
 		//iterating through the list of coordinates for empty spaces
 		for(String coordinate : listOfEmptyCoords){
-			System.out.println(boardIndextoCoords.get(coordinate));
+			//System.out.println(boardIndextoCoords.get(coordinate));
+			char[][] newboard = board;
+			String[] XYasString = coordinate.split(""); 
+
+			//Getting the x and y coordinates of the specific empty spot
+			int xCoord = Integer.valueOf(XYasString[0]);
+			int yCoord = Integer.valueOf(XYasString[1]);
+			System.out.println("X coord is:" + xCoord + ",  Y coord is:" + yCoord);
+
+			//creating a new board with the empty spot becoming X;
+			newboard[yCoord][xCoord] = 'X';
+			
+			for(char[] row: newboard){
+				for(char element : row){
+					System.out.print(element);
+				}
+				System.out.println();
+			}
+			System.out.println("\n");
+
+			//CHECK NEW BOARD FOR WIN OR LOSE
+
+
+			//PRINT OUT THE UTILITY VALUE FOR THE MOVES
+
+
+
+
+			//resets the new board back to normal
+			newboard[yCoord][xCoord] = '.';
+			
 		}
 
 
