@@ -165,8 +165,8 @@ public class Main {
 			}
 
 
-			//Checking for O
-			
+			//Checking for O winning
+
 
 
 
@@ -175,7 +175,7 @@ public class Main {
 
 			//PRINT OUT THE UTILITY VALUE FOR THE MOVES
 
-			System.out.println("Utility" + UtilityValue);
+			System.out.println("For empty space at:(y =" + yCoord + ", x = " + xCoord+  "),  Utility value is:" + UtilityValue);
 			//resets the new board back to normal
 			newboard[yCoord][xCoord] = '.';
 			
