@@ -166,57 +166,6 @@ public class Main {
 
 
 			
-			//Checking O Values for a O Winning:
-			String OemptySpotCoords = "";
-			ArrayList<String> OlistOfEmptyCoords = new ArrayList<>();
-			for(int i = 0; i <3; i ++){
-			for(int k = 0; k<3; k++){
-				if(newboard[i][k] == '.'){
-					System.out.println("Available position for O at: (x=" + k +" , y=" +i +")");
-					OemptySpotCoords = String.valueOf(k) + i;
-
-					//adds the empty coordinate XY e.g 02 into a list of coordinates of empty spaces.
-					OlistOfEmptyCoords.add(OemptySpotCoords);
-				}
-			}
-		}
-
-		for(String Ocoordinate : OlistOfEmptyCoords){
-
-			//System.out.println(boardIndextoCoords.get(coordinate));
-			char[][] Onewboard = newboard;
-			String[] OXYasString = Ocoordinate.split(""); 
-
-			//Getting the x and y coordinates of the specific empty spot
-			int OxCoord = Integer.valueOf(OXYasString[0]);
-			int OyCoord = Integer.valueOf(OXYasString[1]);
-			Onewboard[OyCoord][OxCoord] = 'O';
-			//System.out.println("OX coord is:" + OxCoord + ",  OY coord is:" + OyCoord);
-
-			for(int OyRow =0; OyRow<3; OyRow++){
-				if(Onewboard[OyRow][0] == Onewboard[OyRow][1] && Onewboard[OyRow][1] == Onewboard[OyRow][2]){
-					if(Onewboard[OyRow][0] == 'O'){
-						UtilityValue = "-1";
-
-					}
-				}
-			}
-			
-			//checking columns for wins for X
-			for(int OxCol =0; OxCol <3; OxCol++){
-				if(Onewboard[0][OxCol] == Onewboard[1][OxCol] && Onewboard[1][OxCol] == Onewboard[2][OxCol]){
-					if(Onewboard[0][OxCol] == 'O'){
-						UtilityValue = "-1";
-					}
-				}
-			}
-
-
-
-
-			Onewboard[OyCoord][OxCoord] = '.';
-		}
-		//END OF O SECTION
 
 
 
