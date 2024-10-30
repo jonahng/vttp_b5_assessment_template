@@ -51,6 +51,12 @@ public class Main {
 		PositionsToStringMap.put(4, "fifth highest");
 
 
+		HashMap<Integer,String> Weather = new HashMap<>();
+		Weather.put(1,"Clear, Few clouds, Partly cloudy, Partly cloudy");
+		Weather.put(2,"Mist + Cloudy, Mist + Broken clouds, Mist + Few clouds, Mist");
+		Weather.put(3,"Light Snow, Light Rain + Thunderstorm + Scattered clouds, Light Rain + Scattered clouds");
+		Weather.put(4,"Heavy Rain + Ice Pallets + Thunderstorm + Mist, Snow + Fog");
+
 		//trying highest day:
 		BikeEntry highestDay = MapOfBikeEntry.get(listOfKeys.get(0));
 
@@ -65,13 +71,20 @@ public class Main {
 		for(int i = 0; i<5; i++){
 			//getting the bikeEntry instance from the map, using the key of the totalCyclists
 			BikeEntry highestEntries = MapOfBikeEntry.get(listOfKeys.get(i));
+			int combinedCyclists = highestEntries.getCasual()+highestEntries.getRegistered();
+			String holidayStatus = "";
+			if(highestEntries.isHoliday()){
+				holidayStatus = "a holiday!";
+			}else{
+				holidayStatus = "not a holiday";
+			}
 
 
 			//printing out the statements
 			System.out.println("The " + PositionsToStringMap.get(i) + " recorded number of cyclists was in \n" +
 			Utilities.toSeason(highestEntries.getSeason()) + ", on a " + Utilities.toWeekday(highestEntries.getWeekday()) +
-			" in the month of " + Utilities.toMonth(highestEntries.getMonth()) + ".\n There were a total of " + highestEntries.getCasual()+highestEntries.getRegistered() +
-			" cyclists. The weather \n was " + highestEntries.getWeather() + "\n" + Utilities.toWeekday(highestEntries.getWeekday()) + " was a" + highestEntries.isHoliday()  + "\n");
+			" in the month of " + Utilities.toMonth(highestEntries.getMonth()) + ".\nThere were a total of " + combinedCyclists +
+			" cyclists. The weather \nwas " + Weather.get(highestEntries.getWeather()) + "\n" + Utilities.toWeekday(highestEntries.getWeekday()) + " was " + holidayStatus  + "\n");
 
 
 
