@@ -14,7 +14,7 @@ public class Main {
 			//Could use system.err.println to show an error message to stop the program. Allowed for default value of board0 when no argument given.
 			System.out.println("\nERROR! Restart the program and specify the file name! e.g board1.txt");
 			System.out.println("Since nothing was specified, for demo, using board0.txt");
-			boardFile = new File("task02\\TTT\\board4.txt");//NOT HARDCODING, Arguments are accepted, but if no argument given, run a defaut.
+			boardFile = new File("task02\\TTT\\board0.txt");//NOT HARDCODING, Arguments are accepted, but if no argument given, run a defaut.
 		}
 
 		//Accessing the board.txt files
