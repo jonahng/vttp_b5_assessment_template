@@ -11,7 +11,8 @@ public class Main {
 		if(args.length > 0){
 			boardFile = new File("task02\\TTT\\" + args[0]);
 		}else{
-			System.out.println("Restart the program and specify the file name! e.g board1.txt");
+			//Could use system.err.println to show an error message to stop the program. Allowed for default value of board0 when no argument given.
+			System.out.println("ERROR! Restart the program and specify the file name! e.g board1.txt");
 			System.out.println("Since nothing was specified, for demo, using board0.txt");
 			boardFile = new File("task02\\TTT\\board0.txt");
 		}
@@ -32,15 +33,24 @@ public class Main {
 		board[2] = thirdLine;
 		
 		//printing out the 2d array to show the tic tac toe board
-
-		System.out.println("Here is the TTT Board:");
+		System.out.println("\nHere is the TTT Board:\n");
 		for(char[] row: board){
 			for(char element : row){
 				System.out.print(element);
 			}
 			System.out.println();
 		}
+		System.out.println("\n");
 		
+		//Getting the empty spaces where a next move can be played (legal positions to place X)
+		for(int i = 0; i <3; i ++){
+			for(int k = 0; k<3; k++){
+				if(board[i][k] == '.'){
+					System.out.println("Available position at: x=" + k +" and y=" +i);
+					
+				}
+			}
+		}
 	
 		
 
