@@ -32,6 +32,8 @@ public class Main {
 		board[2] = thirdLine;
 		
 		//printing out the 2d array to show the tic tac toe board
+
+		System.out.println("Here is the TTT Board:");
 		for(char[] row: board){
 			for(char element : row){
 				System.out.print(element);
@@ -53,6 +55,7 @@ public class Main {
 		6,7,8
 		for reference */
 
+		//map to show coordinate for each position
 		HashMap<Integer, String> coordinateMap = new HashMap<>();
 		coordinateMap.put(0, "(x=0, y=0)");
 		coordinateMap.put(1, "(x=1, y=0)");
