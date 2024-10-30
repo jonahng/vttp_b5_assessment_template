@@ -41,8 +41,9 @@ public class Main {
 		//Getting the list of currentDayTotalCyclists and sorting them in descending order. The number can the be referenced from the hashmap
 		List<Integer> listOfKeys = new ArrayList<>(MapOfBikeEntry.keySet());
 		Collections.sort(listOfKeys,Collections.reverseOrder());
-		System.out.println(listOfKeys);
+		//System.out.println(listOfKeys);
 
+		//creating map for the words highest...fifth highest
 		HashMap<Integer,String> PositionsToStringMap = new HashMap<>();
 		PositionsToStringMap.put(0, "highest");
 		PositionsToStringMap.put(1, "second highest");
@@ -50,21 +51,21 @@ public class Main {
 		PositionsToStringMap.put(3, "fourth highest");
 		PositionsToStringMap.put(4, "fifth highest");
 
-
+		//creating map for weather
 		HashMap<Integer,String> Weather = new HashMap<>();
-		Weather.put(1,"Clear, Few clouds, Partly cloudy, Partly cloudy");
-		Weather.put(2,"Mist + Cloudy, Mist + Broken clouds, Mist + Few clouds, Mist");
-		Weather.put(3,"Light Snow, Light Rain + Thunderstorm + Scattered clouds, Light Rain + Scattered clouds");
-		Weather.put(4,"Heavy Rain + Ice Pallets + Thunderstorm + Mist, Snow + Fog");
+		Weather.put(1,"Clear, Few clouds, Partly cloudy, Partly cloudy.");
+		Weather.put(2,"Mist + Cloudy, Mist + Broken clouds, Mist + Few clouds, Mist.");
+		Weather.put(3,"Light Snow, Light Rain + Thunderstorm + Scattered clouds, Light Rain + Scattered clouds.");
+		Weather.put(4,"Heavy Rain + Ice Pallets + Thunderstorm + Mist, Snow + Fog.");
 
 		//trying highest day:
 		BikeEntry highestDay = MapOfBikeEntry.get(listOfKeys.get(0));
 
 		//printing out:
-		System.out.println("For the highest day, the season was: " + 
+/* 		System.out.println("For the highest day, the season was: " + 
 		highestDay.getSeason() + "and the total number of cyclists was" +
 		String.valueOf(highestDay.getCasual()+highestDay.getRegistered()) +
-		"The day was:" + Utilities.toWeekday(highestDay.getWeekday()));
+		"The day was:" + Utilities.toWeekday(highestDay.getWeekday())); */
 
 
 		//iterating through the 5 highest entries
@@ -81,13 +82,10 @@ public class Main {
 
 
 			//printing out the statements
-			System.out.println("The " + PositionsToStringMap.get(i) + " recorded number of cyclists was in \n" +
+			System.out.println("\nThe " + PositionsToStringMap.get(i) + " recorded number of cyclists was in \n" +
 			Utilities.toSeason(highestEntries.getSeason()) + ", on a " + Utilities.toWeekday(highestEntries.getWeekday()) +
 			" in the month of " + Utilities.toMonth(highestEntries.getMonth()) + ".\nThere were a total of " + combinedCyclists +
 			" cyclists. The weather \nwas " + Weather.get(highestEntries.getWeather()) + "\n" + Utilities.toWeekday(highestEntries.getWeekday()) + " was " + holidayStatus  + "\n");
-
-
-
 
 		}
 /* 		System.out.println(The <POSITION> recorded number of cyclists was in
