@@ -82,6 +82,7 @@ public class Main {
 
 
 			//printing out the statements
+			//THIS COULD BE DONE WITH System.out.printf and %s %d etc, however doing it with println feels easier to format.
 			System.out.println("\nThe " + PositionsToStringMap.get(i) + " recorded number of cyclists was in \n" +
 			Utilities.toSeason(highestEntries.getSeason()) + ", on a " + Utilities.toWeekday(highestEntries.getWeekday()) +
 			" in the month of " + Utilities.toMonth(highestEntries.getMonth()) + ".\nThere were a total of " + combinedCyclists +

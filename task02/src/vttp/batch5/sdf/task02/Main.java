@@ -16,22 +16,53 @@ public class Main {
 			boardFile = new File("task02\\TTT\\board0.txt");
 		}
 
-		//File boardFile = new File("task02\\TTT\\board0.txt");
 		FileReader fileReader = new FileReader(boardFile);
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
 		String lineRead;
-/* 		while ((lineRead = bufferedReader.readLine()) != null) {
-			System.out.println(bufferedReader.readLine());
-		} */
 
-		System.out.println(bufferedReader.readLine());
-		System.out.println(bufferedReader.readLine());
-		System.out.println(bufferedReader.readLine());
+		//Turning the board into a 2d array
+		char[][] board = {{0, 1, 2},{3, 4, 5},{6, 7, 8}};
+		
+		//adding each row from the board.txt file to the array
+		char[] firstLine = bufferedReader.readLine().toCharArray();
+		board[0] = firstLine;
+		char[] secondLine = bufferedReader.readLine().toCharArray();
+		board[1] = secondLine;
+		char[] thirdLine = bufferedReader.readLine().toCharArray();
+		board[2] = thirdLine;
+		
+		//printing out the 2d array to show the tic tac toe board
+		for(char[] row: board){
+			for(char element : row){
+				System.out.print(element);
+			}
+			System.out.println();
+		}
+		
+	
 		
 
-		//REPLACE THIS WITH THE CODE THAT TAKES IN ARGUMENT!
+	/* 	positions of each coordinate
+		00,10,20
+		01,11,21
+		02,12,22
 
+		positions of index
+		0,1,2
+		3,4,5
+		6,7,8
+		for reference */
 
+		HashMap<Integer, String> coordinateMap = new HashMap<>();
+		coordinateMap.put(0, "(x=0, y=0)");
+		coordinateMap.put(1, "(x=1, y=0)");
+		coordinateMap.put(2, "(x=2, y=0)");
+		coordinateMap.put(3, "(x=0, y=1)");
+		coordinateMap.put(4, "(x=1, y=1)");
+		coordinateMap.put(5, "(x=2, y=1)");
+		coordinateMap.put(6, "(x=0, y=2)");
+		coordinateMap.put(7, "(x=1, y=2)");
+		coordinateMap.put(8, "(x=2, y=2)");
 
 
 	}
